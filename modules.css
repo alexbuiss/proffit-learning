@@ -739,7 +739,6 @@ body{
 
 .feedback.correct{
   background:rgba(76,175,80,.1);
-  border-left:4px solid #4caf50;
   color:var(--text);
 }
 
@@ -749,7 +748,6 @@ body{
 
 .feedback.incorrect{
   background:rgba(244,67,54,.1);
-  border-left:4px solid #f44336;
   color:var(--text);
 }
 
@@ -759,7 +757,6 @@ body{
 
 .feedback.correct-answer{
   background:rgba(76,175,80,.1);
-  border-left:4px solid #4caf50;
   color:var(--text);
   display:block;
   margin-top:16px;

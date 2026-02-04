@@ -458,7 +458,7 @@ function renderPage(pageData){
                 <div>${pageData.testData.incorrectResponse}</div>
               </div>
               <div class="feedback correct-answer">
-                <strong>La bonne réponse était :</strong>
+                <strong>The correct answer was:</strong>
                 <div>${pageData.testData.choices.find(c => c.isCorrect).text}</div>
               </div>
             `;
@@ -481,7 +481,7 @@ function renderPage(pageData){
     }
   } else {
     // Regular content page
-    pageBody.innerHTML = pageData.bodyHtml || "<p>(Aucun texte)</p>";
+    pageBody.innerHTML = pageData.bodyHtml || "<p>(No content)</p>";
   }
 
   const media = document.getElementById("pageMedia");
@@ -532,7 +532,7 @@ function renderHomeModule(moduleInfo){
   page.innerHTML = `
     <div class="page-title">${moduleInfo.name}</div>
     <div class="page-body" style="padding: 20px;">
-      <p>Module chargé. Utilisez le sommaire à gauche pour naviguer.</p>
+      <p>Module loaded. Use the table of contents on the left to navigate.</p>
     </div>
   `;
 }
