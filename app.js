@@ -490,10 +490,16 @@ function renderPage(pageData){
   pageData.resources.forEach((r, idx) => {
     const card = document.createElement("div");
     card.className = "thumb";
-    card.innerHTML = `
-      <img src="${r.thumb}" alt="${(r.label || ("Image " + (idx+1))).replaceAll('"','&quot;')}" loading="lazy">
-      <div class="label">${(r.label || ("Image " + (idx+1)))}</div>
-    `;
+    const img = document.createElement("img");
+    img.src = r.thumb;
+    img.alt = (r.label || ("Image " + (idx+1)));
+    img.loading = "lazy";
+    img.onerror = function(){ card.style.display = "none"; };
+    const label = document.createElement("div");
+    label.className = "label";
+    label.textContent = r.label || ("Image " + (idx+1));
+    card.appendChild(img);
+    card.appendChild(label);
     card.addEventListener("click", () => openModal(r.src, r.caption || r.label || ""));
     media.appendChild(card);
   });
@@ -1365,6 +1371,10 @@ function openModal(src, captionHtml){
       container.scrollLeft = (img.offsetWidth - container.clientWidth) / 2;
       container.scrollTop = (img.offsetHeight - container.clientHeight) / 2;
     }, 0);
+  };
+  tempImg.onerror = function() {
+    // Image doesn't exist, close the modal
+    closeModal();
   };
   
   // Set new image
